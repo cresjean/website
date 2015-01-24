@@ -1,0 +1,28 @@
+application: crespo-wang
+version: 1-1-0
+runtime: python27
+api_version: 1
+threadsafe: true
+
+handlers:
+- url: /styles
+  static_dir: client/dist/styles
+
+- url: /images
+  static_dir: client/dist/images
+
+- url: /scripts
+  static_dir: client/dist/scripts
+
+- url: /views
+  static_dir: client/dist/views
+
+- url: /.*
+  script: main.application
+
+
+libraries:
+- name: webapp2
+  version: latest
+- name: jinja2
+  version: latest
