@@ -77,22 +77,7 @@
 //			});
 //		 }, { offset: '70%', triggerOnce: true });
 
-        var waypoint = new Waypoint({
-            offset: '70%',
-            triggerOnce: true,
-            element:  document.getElementById('stats'),
-            handler: function(direction) {
-                $('.timer').each(function() {
-                    counter = $(this).attr('data-count'),
-                    $(this).delay(6000).countTo({
-                        from: 0,
-                        to: counter,
-                        speed: 3000,// Stats Counter Speed
-                        refreshInterval: 50
-                    });
-			});
-            }
-        })
+
 
 		/* ---------------------------------------------- /*
 		 * WOW Animation When You Scroll

@@ -10,15 +10,19 @@
  */
 angular
   .module('crespowangSiteApp', [
+    'ngResource',
     'ngAnimate',
     'ngRoute',
     'ngTouch'
+
+
   ])
-  .config(function ($routeProvider) {
+  .config(function ($routeProvider, $injector) {
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
+        controller: 'MainCtrl',
+        resolve: $injector.get('MyStatResolveMap')
       })
       .when('/about', {
         templateUrl: 'views/about.html',

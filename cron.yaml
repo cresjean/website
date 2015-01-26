@@ -1,0 +1,4 @@
+cron:
+- description: fake up code count
+  url: /api/code
+  schedule: every 3 hours

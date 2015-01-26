@@ -1,23 +1,42 @@
-<div class="jumbotron">
-  <h1>'Allo, 'Allo!</h1>
-  <p class="lead">
-    <img src="images/yeoman.png" alt="I'm Yeoman"><br>
-    Always a pleasure scaffolding your apps.
-  </p>
-  <p><a class="btn btn-lg btn-success" ng-href="#">Splendid!<span class="glyphicon glyphicon-ok"></span></a></p>
-</div>
+		<section id="stats" class="callout">
 
-<div class="row marketing">
-  <h4>HTML5 Boilerplate</h4>
-  <p>
-    HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps or sites.
-  </p>
+			<div class="container">
 
-  <h4>Angular</h4>
-  <p>
-    AngularJS is a toolset for building the framework most suited to your application development.
-  </p>
+				<div class="row">
 
-  <h4>Karma</h4>
-  <p>Spectacular Test Runner for JavaScript.</p>
-</div>
+					<div class="col-md-3 col-sm-12 hidden-xs wow bounceInLeft">
+						<h3>My Stats</h3>
+					</div>
+
+					<div class="col-md-3 col-sm-4 wow bounceInDown">
+						<div class="stat">
+							<div class="stat-icon">
+								<h2><i class="fa fa-code hidden-xs"></i><span class="timer" data-source="stat_lines" data-to="{{stat.stat_lines}}"></span></h2>
+							</div>
+							<h3>Lines of code</h3>
+						</div>
+					</div>
+
+					<div class="col-md-3 col-sm-4 wow bounceInUp">
+						<div class="stat">
+							<div class="stat-icon">
+								<h2><i class="fa fa-bitbucket hidden-xs"></i><span class="timer" data-source="stat_commits" data-to="{{stat.stat_commits}}"></span></h2>
+							</div>
+							<h3>Commits</h3>
+						</div>
+					</div>
+
+					<div class="col-md-3 col-sm-4 wow bounceInRight">
+						<div class="stat">
+							<div class="stat-icon">
+								<h2><i class="fa fa-code-fork hidden-xs"></i><span class="timer" data-source="stat_pulls" data-to="{{stat.stat_pulls}}"></span></h2>
+							</div>
+							<h3>Pull requests</h3>
+						</div>
+					</div>
+
+				</div><!-- .row -->
+
+			</div><!-- .container -->
+
+		</section>

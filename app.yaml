@@ -32,6 +32,37 @@ handlers:
 - url: /.*
   script: main.application
 
+- url: /(.*\.woff)
+  mime_type: application/x-font-woff
+  static_files: static/\1
+  upload: static/(.*\.woff)
+  login: required
+
+- url: /(.*\.eot)
+  mime_type: application/vnd.ms-fontobject
+  static_files: static/\1
+  upload: static/(.*\.eot)
+  login: required
+
+- url: /(.*\.ttf)
+  mime_type: font/ttf
+  static_files: static/\1
+  upload: static/(.*\.ttf)
+  login: required
+
+skip_files:
+- ^(.*/node_modules/.*)
+- ^(.*/.idea/.*)
+- ^(.*/bower_components/.*)
+- ^(.*/.tmp/.*)
+- ^(.*/app/.*)
+- ^(clients/inventory/app/.*)
+- ^(clients/Tour-POC/.*)
+- ^(.*/)?#.*#$
+- ^(.*/)?.*~$
+- ^(.*/)?.*\.py[co]$
+- ^(.*/)?.*/RCS/.*$
+- ^(.*/)?\..*$
 
 libraries:
 - name: webapp2
