@@ -5,7 +5,7 @@ class Code(ndb.Model):
     lines = ndb.IntegerProperty()
     commits = ndb.IntegerProperty()
     pr = ndb.IntegerProperty()
-    updated_time = ndb.DateTimeProperty(auto_now_add=True)
+    updated_time = ndb.DateTimeProperty(auto_now=True)
 
     @classmethod
     def get_one(cls):

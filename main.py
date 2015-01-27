@@ -4,6 +4,7 @@ from random import randrange
 from ds import Code
 import logging
 import json
+from datetime import datetime
 from webapp2_extras import routes
 
 class MainPage(webapp2.RequestHandler):
@@ -30,9 +31,19 @@ class API(webapp2.RequestHandler):
 
         self.response.headers.add("Content-Type", "application/json")
 
+        timenow = datetime.now()
+        timediff = timenow - code_stat.updated_time
+        logging.debug(timediff.seconds)
+        mins = int(timediff.seconds / 60)
+        secs = int(timediff.seconds - mins * 60)
         self.response.write(json.dumps({"stat_lines": code_stat.lines,
                                         "stat_commits": code_stat.commits,
-                                        "stat_pulls": code_stat.pr}))
+                                        "stat_pulls": code_stat.pr,
+                                        "stat_lastupdate": code_stat.updated_time.strftime("%Y-%m-%d %H:%M:%S"),
+                                        "stat_lastupdate_min": mins,
+                                        "stat_lastupdate_sec": secs,
+
+        }))
 
 
     def contact_me(self):
