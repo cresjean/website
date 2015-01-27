@@ -15,6 +15,15 @@ class MainPage(webapp2.RequestHandler):
 
 
 class API(webapp2.RequestHandler):
+
+    def gen_code_stats(self):
+        code_stat = Code.get_one()
+        code_stat.lines = code_stat.lines + randrange(50)
+        code_stat.commits = code_stat.commits + randrange(10)
+        code_stat.pr = code_stat.pr + randrange(2)
+        code_stat.put()
+        self.response.write("OK")
+
     def get_code_stats(self):
 
         code_stat = Code.get_one()
@@ -24,24 +33,26 @@ class API(webapp2.RequestHandler):
             code_stat.put()
         else:
             logging.info("Code stat exist")
-            code_stat.lines = code_stat.lines + randrange(50)
-            code_stat.commits = code_stat.commits + randrange(10)
-            code_stat.pr = code_stat.pr + randrange(2)
-            code_stat.put()
+            # code_stat.lines = code_stat.lines + randrange(50)
+            # code_stat.commits = code_stat.commits + randrange(10)
+            # code_stat.pr = code_stat.pr + randrange(2)
+            # code_stat.put()
 
         self.response.headers.add("Content-Type", "application/json")
 
         timenow = datetime.now()
         timediff = timenow - code_stat.updated_time
         logging.debug(timediff.seconds)
-        mins = int(timediff.seconds / 60)
-        secs = int(timediff.seconds - mins * 60)
+        hours = int(timediff.seconds / 3600)
+        mins = int((timediff.seconds - hours * 3600) / 60)
+        secs = int(timediff.seconds - hours * 3600 - mins * 60)
         self.response.write(json.dumps({"stat_lines": code_stat.lines,
                                         "stat_commits": code_stat.commits,
                                         "stat_pulls": code_stat.pr,
                                         "stat_lastupdate": code_stat.updated_time.strftime("%Y-%m-%d %H:%M:%S"),
                                         "stat_lastupdate_min": mins,
                                         "stat_lastupdate_sec": secs,
+                                        "stat_lastupdate_hr": hours,
 
         }))
 
@@ -66,6 +77,7 @@ application = webapp2.WSGIApplication([
     routes.RedirectRoute('/app<:/?>', redirect_to='/app/index.html'),
     routes.PathPrefixRoute('/api', [
         webapp2.Route('/code', API, handler_method='get_code_stats', methods=['GET']),
+        webapp2.Route('/code-gen', API, handler_method='gen_code_stats', methods=['GET']),
         webapp2.Route('/contact-me', API, handler_method='contact_me', methods=['POST']),
     ])
 

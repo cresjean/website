@@ -1,4 +1,4 @@
 cron:
 - description: fake up code count
-  url: /api/code
-  schedule: every 3 hours
+  url: /api/code-gen
+  schedule: every day 15:00
