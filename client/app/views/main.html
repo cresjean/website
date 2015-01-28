@@ -38,7 +38,9 @@
                 <div class="row">
 
 					<div class="col-sm-12 hidden-xs col-md-12">
-						<h5>Last updated {{stat.stat_lastupdate_hr}} hrs {{stat.stat_lastupdate_min}} mins {{stat.stat_lastupdate_sec}} secs ago from bitbucket</h5>
+
+                        <h5>Last updated <timer start-time="stat.stat_ms">{{hours}} hr{{hoursS}}, {{minutes}} min{{minutesS}}, {{seconds}} sec{{secondsS}} ago from bitbucket.</timer></h5>
+
 					</div>
                </div>
 

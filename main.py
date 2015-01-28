@@ -2,6 +2,7 @@ import webapp2
 from google.appengine.api import mail, taskqueue
 from random import randrange
 from ds import Code
+import calendar
 import logging
 import json
 from datetime import datetime
@@ -53,6 +54,7 @@ class API(webapp2.RequestHandler):
                                         "stat_lastupdate_min": mins,
                                         "stat_lastupdate_sec": secs,
                                         "stat_lastupdate_hr": hours,
+                                        "stat_ms": calendar.timegm(code_stat.updated_time.utctimetuple()) * 1000
 
         }))
 

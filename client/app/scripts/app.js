@@ -13,7 +13,8 @@ angular
     'ngResource',
     'ngAnimate',
     'ngRoute',
-    'ngTouch'
+    'ngTouch',
+    'timer'
 
 
   ])
