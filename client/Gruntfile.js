@@ -208,7 +208,7 @@ module.exports = function (grunt) {
         assetsDirs: ['<%= yeoman.dist %>','<%= yeoman.dist %>/images'],
         patterns: {
             js: [
-                 [/(images\/.*?\.(?:gif|jpeg|jpg|png|webp))/gm, 'Update the JS to reference our revved images']
+                 [/(images\/.*?\.(?:gif|jpeg|jpg|png|svg|webp))/gm, 'Update the JS to reference our revved images']
             ]
         }
       }

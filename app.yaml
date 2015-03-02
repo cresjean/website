@@ -1,5 +1,5 @@
 application: crespo-wang
-version: 1-1-0
+version: 1-1
 runtime: python27
 api_version: 1
 threadsafe: true
@@ -32,12 +32,6 @@ handlers:
 - url: /.*
   script: main.application
 
-- url: /(.*\.woff)
-  mime_type: application/x-font-woff
-  static_files: static/\1
-  upload: static/(.*\.woff)
-  login: required
-
 - url: /(.*\.eot)
   mime_type: application/vnd.ms-fontobject
   static_files: static/\1
@@ -56,8 +50,6 @@ skip_files:
 - ^(.*/bower_components/.*)
 - ^(.*/.tmp/.*)
 - ^(.*/app/.*)
-- ^(clients/inventory/app/.*)
-- ^(clients/Tour-POC/.*)
 - ^(.*/)?#.*#$
 - ^(.*/)?.*~$
 - ^(.*/)?.*\.py[co]$
